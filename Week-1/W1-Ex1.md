@@ -99,6 +99,8 @@ left join vk_data.customers.customer_data as c
     on main.customer_id = c.customer_id
 left join vk_data.suppliers.supplier_info as s
     on main.supplier_id = s.supplier_id
-
 `
+
+
+
     
