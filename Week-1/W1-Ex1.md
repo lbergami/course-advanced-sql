@@ -8,7 +8,7 @@ The query is structered as follows:
 
 `
     with lkpUScities as (
-    select 
+            select 
         lower(trim(city_name)) as city_name, 
         lower(trim(state_abbr)) as state_abbr, 
         lat, long
