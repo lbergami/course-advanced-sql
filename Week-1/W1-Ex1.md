@@ -6,20 +6,21 @@ The query is structered as follows:
 * Filter closest supplier for each customer based on geometric distance
 * Join to the resulting customer-supplier list required attributes 
 
-`   with lkpUScities as (
-    select 
-        lower(trim(city_name)) as city_name, 
-        lower(trim(state_abbr)) as state_abbr, 
-        lat, long
-    from (
+`   
+    with lkpUScities as (
         select 
-            lower(trim(city_name)) as city_name, lower(trim(state_abbr)) as state_abbr, 
-            lat, long, 
-            row_number() over(partition by city_name, state_abbr order by city_name, state_abbr) as row_number
-         from vk_data.resources.us_cities
+            lower(trim(city_name)) as city_name, 
+            lower(trim(state_abbr)) as state_abbr, 
+            lat, long
+        from (
+            select 
+                lower(trim(city_name)) as city_name, lower(trim(state_abbr)) as state_abbr, 
+                lat, long, 
+                row_number() over(partition by city_name, state_abbr order by city_name, state_abbr) as row_number
+            from vk_data.resources.us_cities
          
-    )
-    where row_number = 1
+        )
+        where row_number = 1
     ),
 
     lkpCustomersCities as (
