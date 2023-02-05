@@ -64,7 +64,7 @@ The query is structered as follows:
         select 
             a.customer_id, 
             b.supplier_id, 
-            st_distance(st_makepoint(lkpCustomers.customer_long, lkpCustomers.customer_lat), st_makepoint(lkpSuppliers.supplier_long, lkpSuppliers.supplier_lat)) /               1000 as km_distance
+            st_distance(st_makepoint(lkpCustomers.customer_long, lkpCustomers.customer_lat), st_makepoint(lkpSuppliers.supplier_long, lkpSuppliers.supplier_lat)) /   1000 as km_distance
         from (select customer_id from lkpCustomersGeoCoords) as a 
         cross join (select supplier_id from lkpSupplierGeoCoords) as b
         left join lkpCustomersGeoCoords as lkpCustomers
