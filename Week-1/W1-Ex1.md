@@ -6,12 +6,7 @@ The query is structered as follows:
 * Filter closest supplier for each customer based on geometric distance
 * Join to the resulting customer-supplier list required attributes 
 
-
 `
--- Select relevant variables from the US cities table. 
--- We are interested in "city name" and "state abbreviation" only (i.e. no zip codes for the moment), so when a city is  associated with multiple lat/long coords 
--- I select the first combination  
-
 with lkpUScities as (
     select 
         lower(trim(city_name)) as city_name, 
@@ -28,7 +23,6 @@ with lkpUScities as (
     where row_number = 1
 ),
 
--- Select the combination city and state for each potential customer 
 lkpCustomersCities as (
     select 
         customer_id, 
@@ -37,7 +31,6 @@ lkpCustomersCities as (
     from vk_data.customers.customer_address 
 ),
 
--- Add lat/long coordinates to the city of the potential customer 
 lkpCustomersGeoCoords as (
     select 
         customer_id, 
@@ -48,7 +41,6 @@ lkpCustomersGeoCoords as (
         on (lkpCustomersCities.customer_city = lkpUScities.city_name) and (lkpCustomersCities.customer_state = lkpUScities.state_abbr)
 ),
 
--- Select relevant variables from the supplier info table 
 lkpSupplier as (
     select 
         supplier_id,  
@@ -57,7 +49,6 @@ lkpSupplier as (
     from vk_data.suppliers.supplier_info
 ), 
 
--- Add lat/long coordinates to the supplier table 
 lkpSupplierGeoCoords as (
     select 
         supplier_id, 
@@ -68,7 +59,7 @@ lkpSupplierGeoCoords as (
         on (lkpSupplier.supplier_city = lkpUScities.city_name) and (lkpSupplier.supplier_state = lkpUScities.state_abbr)
 
 ), 
--- Get all possible combinations potential consumers / suppliers and compute the distance in KM for each pair 
+
 lkpConsumersSuppliersFullList as (
     select 
         a.customer_id, 
@@ -86,8 +77,7 @@ lkpConsumersSuppliersList as (
     select 
         customer_id, 
         supplier_id, 
-        round(km_distance) as shopping_distance_km 
--- filter the combination potential customer - supplier with the min distance     
+        round(km_distance) as shopping_distance_km    
     from (select 
             customer_id,
             supplier_id, 
@@ -105,7 +95,6 @@ select
     s.supplier_name,
     main.shopping_distance_km
 from lkpConsumersSuppliersList as main 
--- Join additional table for customer / supplier info 
 left join vk_data.customers.customer_data as c
     on main.customer_id = c.customer_id
 left join vk_data.suppliers.supplier_info as s
