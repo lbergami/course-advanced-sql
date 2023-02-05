@@ -6,7 +6,7 @@ The query is structered as follows:
 * Filter closest supplier for each customer based on geometric distance
 * Join to the resulting customer-supplier list required attributes 
 
-`   
+``` 
     with lkpUScities as (
         select 
             lower(trim(city_name)) as city_name, 
@@ -99,7 +99,7 @@ The query is structered as follows:
         on main.customer_id = c.customer_id
      left join vk_data.suppliers.supplier_info as s
         on main.supplier_id = s.supplier_id
-`
+```
 
 
 
