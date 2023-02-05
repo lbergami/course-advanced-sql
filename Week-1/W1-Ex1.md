@@ -4,7 +4,7 @@ The query is structered as follows:
 * Creation of three tables: US city tables; Potential customers and; suppliers
 * Pairwise combination of customers and suppliers 
 * Filter closest supplier for each customer based on geometric distance
-* Join to the resulting customer-supplier list required attributes 
+* Join the resulting customer-supplier list with required attributes 
 
 ``` 
     with lkpUScities as (
