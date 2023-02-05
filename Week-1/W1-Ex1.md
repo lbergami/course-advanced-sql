@@ -6,9 +6,8 @@ The query is structered as follows:
 * Filter closest supplier for each customer based on geometric distance
 * Join to the resulting customer-supplier list required attributes 
 
-`
-    with lkpUScities as (
-            select 
+`   with lkpUScities as (
+    select 
         lower(trim(city_name)) as city_name, 
         lower(trim(state_abbr)) as state_abbr, 
         lat, long
