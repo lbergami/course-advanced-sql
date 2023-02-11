@@ -1,6 +1,12 @@
+/* Note to the reviewer: I am assuming that the only Brownsville city affected is the one in Texas, 
+                         not other cities with the same name across US. As a result, the list of affected
+                         customers includes 19 values instead of 25. 
+  
+*/
+
 with 
 
-    /* Clean US cities data and extract geo coordinates for the Chicago and Gary*/
+    /* Clean US cities data and extract geo coordinates for the Chicago and Gary */
     
     us_cities_geo_coords as (
 
