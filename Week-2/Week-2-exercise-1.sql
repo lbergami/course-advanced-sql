@@ -1,6 +1,11 @@
 
 /* Note to the reviewer: I am assuming that the only Brownsville city affected is the one in Texas, 
-                         not other cities with the same name across US. As a result, the list of affected
+                         not the other cities with the same name across US. 
+                         
+                         In this way the clause is consistent with the one for the cities located in 
+                         California and Kentucky.
+                         
+                         As a result, the list of affected
                          customers includes 19 values instead of 25. 
   
 */
