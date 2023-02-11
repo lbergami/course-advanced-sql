@@ -1,3 +1,4 @@
+
 /* Note to the reviewer: I am assuming that the only Brownsville city affected is the one in Texas, 
                          not other cities with the same name across US. As a result, the list of affected
                          customers includes 19 values instead of 25. 
