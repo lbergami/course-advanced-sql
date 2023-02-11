@@ -5,8 +5,7 @@
                          In this way the clause is consistent with the one for the cities located in 
                          California and Kentucky.
                          
-                         As a result, the list of affected
-                         customers includes 19 values instead of 25. 
+                         As a result, the list of affected customers includes 19 values instead of 25. 
   
 */
 
