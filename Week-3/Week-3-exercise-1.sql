@@ -1,11 +1,15 @@
-/* The query is structured as follows:
+/* 
+
+	The query is structured as follows:
 	- Get the number of unique sessions by date
     	- Get the average length of session (in sec) by day in two steps:
         	(1) length of each session and;
             	(2) avg length session by day 
     	- Get the list of sessions ending with a viewed recipe. The table is then used as input to compute:
     		- Avg number of searches per day; 
-        	- Most popular recipes IDs per day. When there is a tie, I report all them in an array  */
+        	- Most popular recipes IDs per day. When there is a tie, I report all them in an array  
+
+*/
 	
 with 
 	
